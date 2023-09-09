@@ -1,18 +1,21 @@
 package org.example.utils;
 
+import org.example.model.LogEntry;
 import org.example.model.LogEntryWrapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 class ParserTest {
 
     @Test
     void jsonToPojo() throws IOException {
-        ReadDocument readDocument = new ReadDocument();
+        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
 
-        Parser parser = new Parser();
-        LogEntryWrapper logEntries = parser.jsonToPojo(readDocument.readFile("/authentication-log.json"));
-        logEntries.getLogEntries().forEach(System.out::println);
+        Parser parser = new Parser(readDocument.readFile());
+        List<LogEntry> logEntries = parser.jsonToPojo();
+        logEntries.forEach(System.out::println);
+
     }
 }

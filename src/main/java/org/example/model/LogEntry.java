@@ -65,7 +65,7 @@ public class LogEntry {
 
     @Override
     public String toString() {
-        return "LogEntry{" +
+        return "{" +
                 "winlog=" + winlog +
                 ", event=" + event +
                 ", timestamp='" + timestamp + '\'' +

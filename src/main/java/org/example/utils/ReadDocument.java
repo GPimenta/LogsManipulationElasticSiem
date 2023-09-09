@@ -7,7 +7,13 @@ import java.io.InputStreamReader;
 
 public class ReadDocument {
 
-    public StringBuilder readFile(String resourceFile) throws IOException {
+    private String resourceFile;
+
+    public ReadDocument(String resourceFile){
+        this.resourceFile = resourceFile;
+    }
+
+    public StringBuilder readFile() throws IOException {
         InputStream resourceAsStream = ReadDocument.class.getResourceAsStream(resourceFile);
         BufferedReader reader = new BufferedReader(new InputStreamReader(resourceAsStream));
         StringBuilder jsonString = new StringBuilder();

@@ -6,12 +6,18 @@ import lombok.Data;
 import org.example.model.LogEntryWrapper;
 import org.example.model.LogEntry;
 
+import java.util.List;
+
 @Data
 public class Parser {
 
-    public LogEntryWrapper jsonToPojo(StringBuilder jsonString) throws JsonProcessingException {
+    private StringBuilder jsonString;
+    public Parser(StringBuilder jsonString) {
+        this.jsonString = jsonString;
+    }
+
+    public List<LogEntry> jsonToPojo() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        LogEntryWrapper logEntryWrapper = objectMapper.readValue(jsonString.toString(), LogEntryWrapper.class);
-        return logEntryWrapper;
+        return objectMapper.readValue(jsonString.toString(), objectMapper.getTypeFactory().constructCollectionType(List.class, LogEntry.class));
     }
 }
