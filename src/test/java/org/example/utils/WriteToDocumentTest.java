@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class WriteToDocumentTest {
 
 
@@ -20,7 +18,7 @@ class WriteToDocumentTest {
 
         List<LogEntry> logEntries = parser.jsonToPojo();
 
-        List<LogEntry> logEntryList = logEntries.stream().map(writeToDocument::correctDocumentLogEntry).collect(Collectors.toList());
+        List<LogEntry> logEntryList = logEntries.stream().map(writeToDocument::correctDocumentLogEntryTimeStamp).collect(Collectors.toList());
 
         logEntryList.forEach(System.out::println);
 
@@ -40,6 +38,23 @@ class WriteToDocumentTest {
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         writeToDocument.writeLogs();
 
+    }
+
+    @Test
+    void addTime() throws IOException {
+        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+        Parser parser = new Parser(readDocument.readFile());
+        List<LogEntry> logEntries = parser.jsonToPojo();
+        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+        List<LogEntry> logEntriesCorrected = logEntries.stream().map(writeToDocument::correctDocumentLogEntryTimeStamp).collect(Collectors.toList());
+
+        writeToDocument.addTime();
+    }
+
+    @Test
+    void addTimeLogs() throws IOException {
+        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+        writeToDocument.addTimeLogs().forEach(System.out::println);
     }
 
 }

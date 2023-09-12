@@ -68,7 +68,7 @@ public class LogEntry {
         return "{" +
                 "winlog=" + winlog +
                 ", event=" + event +
-                ", timestamp='" + timestamp + '\'' +
+                ", @timestamp='" + timestamp + '\'' +
                 ", user=" + user +
                 ", host=" + host +
                 ", source=" + source +
