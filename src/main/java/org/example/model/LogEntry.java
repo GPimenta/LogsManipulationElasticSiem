@@ -1,7 +1,9 @@
 package org.example.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class LogEntry {
+import java.util.Comparator;
+
+public class LogEntry implements Comparator<LogEntry> {
     @JsonProperty("winlog")
     private Winlog winlog;
     @JsonProperty("event")
@@ -73,5 +75,15 @@ public class LogEntry {
                 ", host=" + host +
                 ", source=" + source +
                 '}';
+    }
+
+    @Override
+    public int compare(LogEntry logEntry1, LogEntry logEntry2) {
+        int userComparison = logEntry1.getUser().getName().compareTo(logEntry2.getUser().getName());
+
+        if (userComparison != 0) {
+            return userComparison;
+        }
+        return logEntry1.getTimestamp().compareTo(logEntry2.getTimestamp());
     }
 }

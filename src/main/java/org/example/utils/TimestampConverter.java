@@ -5,11 +5,9 @@ import org.example.model.LogEntry;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.text.SimpleDateFormat;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class TimestampConverter {
 
@@ -23,10 +21,23 @@ public class TimestampConverter {
         return timestamp.format(formatter);
     }
 
-    public static LogEntry resetHour(LogEntry logEntry){
+    public static LogEntry resetDateTime(LogEntry logEntry){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2023, Calendar.AUGUST,15);
+        calendar.set(Calendar.HOUR_OF_DAY, 9);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date date = calendar.getTime();
+        logEntry.setTimestamp(dateFormat.format(date));
+
+        return logEntry;
+    }
+
+    public static LogEntry resetHour(LogEntry logEntry, int plusDay) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2023, Calendar.AUGUST,15 + plusDay);
         calendar.set(Calendar.HOUR_OF_DAY, 9);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);

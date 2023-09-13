@@ -4,6 +4,7 @@ import org.example.model.LogEntry;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,9 +53,25 @@ class WriteToDocumentTest {
     }
 
     @Test
-    void addTimeLogs() throws IOException {
+    void addHoursToLogs() throws IOException {
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        writeToDocument.addTimeLogs().forEach(System.out::println);
+        writeToDocument.addHoursToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
+    }
+
+    @Test
+    void addDaysToLogs() throws IOException {
+        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+        writeToDocument.addDaysToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
+    }
+
+    @Test
+    void addDateTimeToLogs() throws IOException {
+        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+        List<LogEntry> logEntries = writeToDocument.addDateTimeToLogs();
+        logEntries.stream().sorted((o1, o2) -> o1.compare(o1,o2)).forEach(System.out::println);
+//        logEntries.sort(Comparator.comparing(logEntry -> logEntry.getUser().toString()));
+//        logEntries.forEach(System.out::println);
+
     }
 
 }

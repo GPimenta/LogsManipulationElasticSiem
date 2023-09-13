@@ -5,7 +5,6 @@ import org.example.model.LogEntry;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,52 +29,80 @@ public class WriteToDocument {
         return logEntry;
     }
 
-    public List<LogEntry> addTimeLogs() throws IOException {
+    public List<LogEntry> addDaysToLogs(List<LogEntry>logEntries) throws IOException {
+        int workDays = 5;
+//        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+//        Parser parser = new Parser(readDocument.readFile());
+//
+//        List<LogEntry> logEntries = parser.jsonToPojo()
+//                .stream()
+//                .map(this::correctDocumentLogEntryTimeStamp)
+//                .map(TimestampConverter::resetDateTime)
+//                .collect(Collectors.toList());
+
+        List<LogEntry> copyListForDays = DuplicateList.createCopyList(logEntries);
+        List<LogEntry> logEntriesFinal = new ArrayList<>();
+
+        for (int i = 0; i < workDays; i++) {
+            logEntriesFinal = DuplicateList.duplicateList(logEntries, TimestampConverter
+                    .addDayToLogList(copyListForDays));
+        }
+        return logEntriesFinal;
+
+    }
+
+    public List<LogEntry> addHoursToLogs(List<LogEntry>logEntries) throws IOException {
         int workHours = 9;
+//        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+//        Parser parser = new Parser(readDocument.readFile());
+//
+//        List<LogEntry> logEntries = parser.jsonToPojo()
+//                .stream()
+//                .map(this::correctDocumentLogEntryTimeStamp)
+//                .map(TimestampConverter::resetDateTime)
+//                .collect(Collectors.toList());
+
+
+        List<LogEntry> copyListForHours = DuplicateList.createCopyList(logEntries);
+//        List<LogEntry> copyListAddHour = new ArrayList<>();
+        List<LogEntry> logEntriesFinal = new ArrayList<>();
+
+        for (int i = 0; i < workHours; i++) {
+            logEntriesFinal = DuplicateList.duplicateList(logEntries, TimestampConverter
+                    .addHourToLogList(copyListForHours));
+        }
+
+
+//        for (int i = 0; i < workHours; i++) {
+//            copyListAddHour = TimestampConverter.addHourToLogList(copyListForHours);
+//            logEntriesFinal = DuplicateList.duplicateList(logEntries, copyListAddHour);
+//        }
+
+        return logEntriesFinal;
+    }
+
+
+    public List<LogEntry> resetListLogEntry() throws IOException {
         ReadDocument readDocument = new ReadDocument("/authentication-log.json");
         Parser parser = new Parser(readDocument.readFile());
-//        List<LogEntry> logEntries = parser.jsonToPojo();
-//        List<LogEntry> logEntriesRemovedErrorTime = logEntries.stream().map(this::correctDocumentLogEntryTimeStamp).collect(Collectors.toList());
-//        List<LogEntry> logEntriesResetDateTime = logEntriesRemovedErrorTime.stream().map(TimestampConverter::resetHour).collect(Collectors.toList());
-
 
         List<LogEntry> logEntries = parser.jsonToPojo()
                 .stream()
                 .map(this::correctDocumentLogEntryTimeStamp)
-                .map(TimestampConverter::resetHour)
+                .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
-//        List<LogEntry> copyListForHours = DuplicateList.createCopyList(logEntriesResetDateTime);
-//        List<LogEntry> logEntriesFinal = new ArrayList<>();
-
-        List<LogEntry> copyListForHours = DuplicateList.createCopyList(logEntries);
-        List<LogEntry> copyListAddHour = new ArrayList<>();
-        List<LogEntry> copyListForDays = new ArrayList<>();
-        List<LogEntry> copyListAddDay = new ArrayList<>();
-
-        List<LogEntry> logEntriesFinal = new ArrayList<>();
-
-
-
-
-        for (int i = 0; i < workHours; i++) {
-//            for (LogEntry logEntry: copyListForHours) {
-//                LocalDateTime dateTimeForHour = TimestampConverter.converTimestampToLocalDateTime(logEntry.getTimestamp());
-//                LocalDateTime addHour = TimestampConverter.addHour(dateTimeForHour);
-//                String timestampAddedHour = TimestampConverter.converTimestampToString(addHour);
-//                logEntry.setTimestamp(timestampAddedHour);
-//            }
-//            copyListAddHour = DuplicateList.createCopyList(copyListForHours);
-            copyListAddHour = TimestampConverter.addHourToLogList(copyListForHours);
-            logEntriesFinal = DuplicateList.duplicateList(logEntries, copyListAddHour);
-        }
-
-
-
-
-
-        return logEntriesFinal;
+        return logEntries;
     }
+
+    public List<LogEntry> addDateTimeToLogs() throws IOException {
+        List<LogEntry> logDaysEntries = addDaysToLogs(resetListLogEntry());
+        List<LogEntry> logHoursEntries = addHoursToLogs(logDaysEntries);
+
+        return logHoursEntries;
+    }
+
+
 
     public void addTime(){
         List<String> timestamps = new ArrayList<>();
