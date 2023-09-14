@@ -42,17 +42,6 @@ class WriteToDocumentTest {
     }
 
     @Test
-    void addTime() throws IOException {
-        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
-        Parser parser = new Parser(readDocument.readFile());
-        List<LogEntry> logEntries = parser.jsonToPojo();
-        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        List<LogEntry> logEntriesCorrected = logEntries.stream().map(writeToDocument::correctDocumentLogEntryTimeStamp).collect(Collectors.toList());
-
-        writeToDocument.addTime();
-    }
-
-    @Test
     void addHoursToLogs() throws IOException {
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         writeToDocument.addHoursToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);

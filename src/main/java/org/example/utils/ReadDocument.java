@@ -22,8 +22,6 @@ public class ReadDocument {
         while ((line = reader.readLine()) != null ) {
             jsonString.append(line);
         }
-
         return jsonString;
     }
-
 }
