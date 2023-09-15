@@ -41,26 +41,26 @@ class WriteToDocumentTest {
 
     }
 
-    @Test
-    void addHoursToLogs() throws IOException {
-        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        writeToDocument.addHoursToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
-    }
+//    @Test
+//    void addHoursToLogs() throws IOException {
+//        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+//        writeToDocument.addHoursToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
+//    }
+//
+//    @Test
+//    void addDaysToLogs() throws IOException {
+//        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+//        writeToDocument.addDaysToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
+//    }
 
-    @Test
-    void addDaysToLogs() throws IOException {
-        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        writeToDocument.addDaysToLogs(writeToDocument.resetListLogEntry()).forEach(System.out::println);
-    }
-
-    @Test
-    void addDateTimeToLogs() throws IOException {
-        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        List<LogEntry> logEntries = writeToDocument.addDateTimeToLogs();
-        logEntries.stream().sorted((o1, o2) -> o1.compare(o1,o2)).forEach(System.out::println);
-//        logEntries.sort(Comparator.comparing(logEntry -> logEntry.getUser().toString()));
-//        logEntries.forEach(System.out::println);
-
-    }
+//    @Test
+//    void addDateTimeToLogs() throws IOException {
+//        WriteToDocument writeToDocument = new WriteToDocument("/logs");
+//        List<LogEntry> logEntries = writeToDocument.addDateTimeToLogs();
+//        logEntries.stream().sorted((o1, o2) -> o1.compare(o1,o2)).forEach(System.out::println);
+////        logEntries.sort(Comparator.comparing(logEntry -> logEntry.getUser().toString()));
+////        logEntries.forEach(System.out::println);
+//
+//    }
 
 }
