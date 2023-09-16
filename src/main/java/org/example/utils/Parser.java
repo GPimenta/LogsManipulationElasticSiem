@@ -11,13 +11,23 @@ import java.util.List;
 @Data
 public class Parser {
 
-    private StringBuilder jsonString;
-    public Parser(StringBuilder jsonString) {
-        this.jsonString = jsonString;
-    }
+//    private StringBuilder jsonString;
+//    public Parser(StringBuilder jsonString) {
+//        this.jsonString = jsonString;
+//    }
+//
+//    public List<LogEntry> jsonToPojo() throws JsonProcessingException {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        return objectMapper.readValue(jsonString.toString(), objectMapper.getTypeFactory().constructCollectionType(List.class, LogEntry.class));
+//    }
 
-    public List<LogEntry> jsonToPojo() throws JsonProcessingException {
+    public static List<LogEntry> jsonToPojo(StringBuilder jsonString) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonString.toString(), objectMapper.getTypeFactory().constructCollectionType(List.class, LogEntry.class));
+    }
+
+    public static String pojoToJson(LogEntry logEntry) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(logEntry) + "\n";
     }
 }

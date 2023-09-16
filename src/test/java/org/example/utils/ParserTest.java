@@ -13,8 +13,8 @@ class ParserTest {
     void jsonToPojo() throws IOException {
         ReadDocument readDocument = new ReadDocument("/authentication-log.json");
 
-        Parser parser = new Parser(readDocument.readFile());
-        List<LogEntry> logEntries = parser.jsonToPojo();
+//        Parser parser = new Parser(readDocument.readFile());
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile());
         logEntries.forEach(System.out::println);
 
     }

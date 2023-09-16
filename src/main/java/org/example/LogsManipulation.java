@@ -25,9 +25,10 @@ public class LogsManipulation {
     }
 
     private List<LogEntry> resetListLogEntry() throws IOException {
-        Parser parser = new Parser(readDocument.readFile());
+//        Parser parser = new Parser(readDocument.readFile());
 
-        List<LogEntry> logEntries = parser.jsonToPojo()
+
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile())
                 .stream()
                 .map(this::correctDocumentLogEntryTimeStamp)
                 .map(TimestampConverter::resetDateTime)
@@ -70,4 +71,7 @@ public class LogsManipulation {
         writeToDocument.writeOnResourceFile(addDateTimeToLogs(5, 9), fileName);
     }
 
+    public void writeLogsJson(String fileName) throws IOException {
+        writeToDocument.writeOnResourceFileJson(addDateTimeToLogs(5, 9), fileName);
+    }
 }

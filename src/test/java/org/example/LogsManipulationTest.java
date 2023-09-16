@@ -29,9 +29,9 @@ class LogsManipulationTest {
     @Test
     void correctDocumentLogEntryTimeStamp() throws IOException {
         readDocument = new ReadDocument("/authentication-log.json");
-        Parser parser = new Parser(readDocument.readFile());
+//        Parser parser = new Parser(readDocument.readFile());
 
-        List<LogEntry> logEntries = parser.jsonToPojo().stream()
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(logEntry ->
                 {
                     int startIndex = logEntry.getTimestamp().indexOf("\"");
@@ -47,9 +47,9 @@ class LogsManipulationTest {
     @Test
     void resetListLogEntry() throws IOException {
         readDocument = new ReadDocument("/authentication-test-log.json");
-        Parser parser = new Parser(readDocument.readFile());
+//        Parser parser = new Parser(readDocument.readFile());
 
-        List<LogEntry> logEntries = parser.jsonToPojo().stream()
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
@@ -64,8 +64,8 @@ class LogsManipulationTest {
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
 
-        Parser parser = new Parser(readDocument.readFile());
-        List<LogEntry> logEntries = parser.jsonToPojo().stream()
+//        Parser parser = new Parser(readDocument.readFile());
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
@@ -80,8 +80,8 @@ class LogsManipulationTest {
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
 
-        Parser parser = new Parser(readDocument.readFile());
-        List<LogEntry> logEntries = parser.jsonToPojo().stream()
+//        Parser parser = new Parser(readDocument.readFile());
+        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
@@ -106,6 +106,14 @@ class LogsManipulationTest {
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
         logsManipulation.writeLogs("/logs.txt");
+    }
+
+    @Test
+    void writeLogsJson() throws IOException {
+        readDocument = new ReadDocument("/authentication-log.json");
+        writeToDocument = new WriteToDocument("/logs");
+        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
+        logsManipulation.writeLogsJson("/logs.json");
     }
 
 }
