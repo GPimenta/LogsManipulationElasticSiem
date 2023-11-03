@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class LogsManipulationTest {
+class LogsTimeManipulationTest {
 
     ReadDocument readDocument;
     WriteToDocument writeToDocument;
@@ -58,14 +58,14 @@ class LogsManipulationTest {
     void addDaysToLogs() throws IOException {
         readDocument = new ReadDocument("/authentication-test-log.json");
         writeToDocument = new WriteToDocument("/logs");
-        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
+        LogsTimeManipulation logsTimeManipulation = new LogsTimeManipulation(readDocument, writeToDocument);
 
 //        Parser parser = new Parser(readDocument.readFile());
         List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
-        List<LogEntry> logEntriesAddedDays = logsManipulation.addDaysToLogs(logEntries, 5);
+        List<LogEntry> logEntriesAddedDays = logsTimeManipulation.addDaysToLogs(logEntries, 5);
         logEntriesAddedDays.forEach(System.out::println);
 
     }
@@ -74,14 +74,14 @@ class LogsManipulationTest {
     void addHoursToLogs() throws IOException {
         readDocument = new ReadDocument("/authentication-test-log.json");
         writeToDocument = new WriteToDocument("/logs");
-        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
+        LogsTimeManipulation logsTimeManipulation = new LogsTimeManipulation(readDocument, writeToDocument);
 
 //        Parser parser = new Parser(readDocument.readFile());
         List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile()).stream()
                 .map(TimestampConverter::resetDateTime)
                 .collect(Collectors.toList());
 
-        List<LogEntry> logEntriesAddedDays = logsManipulation.addHoursToLogs(logEntries, 9);
+        List<LogEntry> logEntriesAddedDays = logsTimeManipulation.addHoursToLogs(logEntries, 9);
         logEntriesAddedDays.forEach(System.out::println);
     }
 
@@ -89,9 +89,9 @@ class LogsManipulationTest {
     void addDateTimeToLogs() throws IOException {
         readDocument = new ReadDocument("/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
-        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
+        LogsTimeManipulation logsTimeManipulation = new LogsTimeManipulation(readDocument, writeToDocument);
 
-        List<LogEntry> logEntries = logsManipulation.addDateTimeToLogs(5, 9);
+        List<LogEntry> logEntries = logsTimeManipulation.addDateTimeToLogs(5, 9);
         logEntries.forEach(System.out::println);
 
     }
@@ -100,16 +100,16 @@ class LogsManipulationTest {
     void writeLogs() throws IOException {
         readDocument = new ReadDocument("/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
-        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-        logsManipulation.writeStringLogsToFile("/logs.txt");
+        LogsTimeManipulation logsTimeManipulation = new LogsTimeManipulation(readDocument, writeToDocument);
+        logsTimeManipulation.writeStringLogsToFile("/logs.txt");
     }
 
     @Test
     void writeLogsJson() throws IOException {
         readDocument = new ReadDocument("/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
-        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-        logsManipulation.writeJsonLogsToFile("/logs.json");
+        LogsTimeManipulation logsTimeManipulation = new LogsTimeManipulation(readDocument, writeToDocument);
+        logsTimeManipulation.writeJsonLogsToFile("/logs.json");
     }
 
 }

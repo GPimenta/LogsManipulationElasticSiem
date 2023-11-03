@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LogsManipulation {
+public class LogsTimeManipulation {
     private ReadDocument readDocument;
     private WriteToDocument writeToDocument;
-    public LogsManipulation(ReadDocument readDocument, WriteToDocument writeToDocument) {
+    public LogsTimeManipulation(ReadDocument readDocument, WriteToDocument writeToDocument) {
         this.readDocument = readDocument;
         this.writeToDocument = writeToDocument;
     }
@@ -72,5 +72,5 @@ public class LogsManipulation {
         writeToDocument.writeOnResourceFileJson(addDateTimeToLogs(5, 9), fileName);
     }
 
-    
+
 }
