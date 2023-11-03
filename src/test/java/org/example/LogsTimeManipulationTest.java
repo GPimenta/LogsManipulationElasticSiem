@@ -5,15 +5,11 @@ import org.example.utils.Parser;
 import org.example.utils.ReadDocument;
 import org.example.utils.TimestampConverter;
 import org.example.utils.WriteToDocument;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LogsManipulationTest {
 
@@ -105,7 +101,7 @@ class LogsManipulationTest {
         readDocument = new ReadDocument("/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-        logsManipulation.writeLogs("/logs.txt");
+        logsManipulation.writeStringLogsToFile("/logs.txt");
     }
 
     @Test
@@ -113,7 +109,7 @@ class LogsManipulationTest {
         readDocument = new ReadDocument("/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-        logsManipulation.writeLogsJson("/logs.json");
+        logsManipulation.writeJsonLogsToFile("/logs.json");
     }
 
 }
