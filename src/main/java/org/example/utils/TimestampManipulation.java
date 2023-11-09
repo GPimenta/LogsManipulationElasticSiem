@@ -1,5 +1,6 @@
 package org.example.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.model.LogEntry;
 
 import java.time.LocalDateTime;
@@ -9,15 +10,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class TimestampConverter {
+public class TimestampManipulation {
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     public static LocalDateTime converTimestampToLocalDateTime(String timestamp){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         return LocalDateTime.parse(timestamp, formatter);
     }
 
     public static String converTimestampToString(LocalDateTime timestamp){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         return timestamp.format(formatter);
     }
 
@@ -47,34 +49,43 @@ public class TimestampConverter {
         return logEntry;
     }
 
-    public static LocalDateTime addHour(LocalDateTime dateTime) {
+    private static LocalDateTime sumHour(LocalDateTime dateTime) {
         return dateTime.plusHours(1);
     }
 
-    public static LocalDateTime addDay(LocalDateTime dateTime) {
+    private static LocalDateTime sumDay(LocalDateTime dateTime) {
         return dateTime.plusDays(1);
     }
     
-    public static List<LogEntry> addHourToLogList(List<LogEntry> logEntryList) {
+    public static List<LogEntry> addNormalWorkingHoursToLogList(List<LogEntry> logEntryList) {
         for (LogEntry logEntry: logEntryList) {
-            LocalDateTime dateTimeForHour = TimestampConverter.converTimestampToLocalDateTime(logEntry.getTimestamp());
-            LocalDateTime addHour = TimestampConverter.addHour(dateTimeForHour);
-            String timestampAddedHour = TimestampConverter.converTimestampToString(addHour);
+            LocalDateTime dateTimeForHour = TimestampManipulation.converTimestampToLocalDateTime(logEntry.getTimestamp());
+            LocalDateTime addHour = TimestampManipulation.sumHour(dateTimeForHour);
+            String timestampAddedHour = TimestampManipulation.converTimestampToString(addHour);
             logEntry.setTimestamp(timestampAddedHour);
         }
-        return DuplicateList.createCopyList(logEntryList);
+        return ListManipulation.createCopyList(logEntryList);
     }
 
-    public static List<LogEntry> addDayToLogList(List<LogEntry> logEntryList) {
+    public static List<LogEntry> addNormalWorkingDaysToLogList(List<LogEntry> logEntryList) {
         for (LogEntry logEntry: logEntryList) {
-            LocalDateTime dateTimeForDay = TimestampConverter.converTimestampToLocalDateTime(logEntry.getTimestamp());
-            LocalDateTime addDay = TimestampConverter.addDay(dateTimeForDay);
-            String timestampAddedHour = TimestampConverter.converTimestampToString(addDay);
+            LocalDateTime dateTimeForDay = TimestampManipulation.converTimestampToLocalDateTime(logEntry.getTimestamp());
+            LocalDateTime addDay = TimestampManipulation.sumDay(dateTimeForDay);
+            String timestampAddedHour = TimestampManipulation.converTimestampToString(addDay);
             logEntry.setTimestamp(timestampAddedHour);
         }
-        return DuplicateList.createCopyList(logEntryList);
+        return ListManipulation.createCopyList(logEntryList);
     }
 
+//    public static LogEntry addDayTime(String logEntry, String timeStamp) throws JsonProcessingException {
+//        StringBuilder sb = new StringBuilder();
+//        LogEntry newLogEntry = Parser.jsonToPojo(sb.append(logEntry));
+//        newLogEntry.setTimestamp(timeStamp);
+//        return newLogEntry;
+//    }
 
+//    public static LogEntry addHour(String logEntry) {
+//
+//    }
 
 }

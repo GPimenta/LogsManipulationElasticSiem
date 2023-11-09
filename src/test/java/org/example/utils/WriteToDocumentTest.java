@@ -4,7 +4,6 @@ import org.example.model.LogEntry;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,7 @@ class WriteToDocumentTest {
 //        Parser parser = new Parser(readDocument.readFile());
         WriteToDocument writeToDocument = new WriteToDocument("/logs.txt");
 
-        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile());
+        List<LogEntry> logEntries = Parser.jsonArrayToPojo(readDocument.readFile());
 
         List<LogEntry> logEntryList = logEntries.stream().map(writeToDocument::correctDocumentLogEntryTimeStamp).collect(Collectors.toList());
 
@@ -30,7 +29,7 @@ class WriteToDocumentTest {
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         ReadDocument readDocument = new ReadDocument("/authentication-log.json");
 //        Parser parser = new Parser(readDocument.readFile());
-        List<LogEntry> logEntries = Parser.jsonToPojo(readDocument.readFile());
+        List<LogEntry> logEntries = Parser.jsonArrayToPojo(readDocument.readFile());
         writeToDocument.writeOnResourceFile(logEntries, "/logs.txt");
     }
 

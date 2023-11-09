@@ -5,7 +5,7 @@ import org.example.model.LogEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DuplicateList {
+public class ListManipulation {
 
     public static LogEntry copyLogEntry(LogEntry logEntry) {
         LogEntry logEntryCopy = new LogEntry();
@@ -28,7 +28,7 @@ public class DuplicateList {
         return logEntriesCopy;
     }
 
-    public static List<LogEntry> duplicateList(List<LogEntry> logEntriesOriginal, List<LogEntry> logEntriesCopy) {
+    public static List<LogEntry> addTimeList(List<LogEntry> logEntriesOriginal, List<LogEntry> logEntriesCopy) {
 //        List<LogEntry> logEntryList = new ArrayList<>();
 //        if (logEntryList.addAll(logEntriesOriginal) && logEntryList.addAll(logEntriesCopy)) {
 //            return logEntryList;
