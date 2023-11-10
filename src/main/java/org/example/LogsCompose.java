@@ -10,40 +10,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class LogsCompose {
-//    static {
-//        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
-//        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-//        LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-//        try {
-//            logsManipulation.writeJsonLogsToFile("/logs.json");
-//        } catch (IOException e) {
-//            throw new RuntimeException("STATIC" + e);
-//        }
-//    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
+    static {
         ReadDocument readDocument = new ReadDocument("/authentication-log.json");
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
-        logsManipulation.writeJsonLogsToFile("/logs.json");
-
-
-        String time = "2024-08-15T09:00:00";
-//        WriteToDocument writeToDocument = new WriteToDocument("/logs");
-        Thread.sleep(5000);
-        LogsCompose.addLogDayTime(writeToDocument, time);
-
+        try {
+            logsManipulation.writeJsonLogsToFile("/logs.json");
+        } catch (IOException e) {
+            throw new RuntimeException("STATIC" + e);
+        }
     }
-
-
-
-
-
-
-
-
-
-
 
     public static void resetLogs(ReadDocument readDocument, WriteToDocument writeToDocument) throws IOException {
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
@@ -63,13 +39,7 @@ public class LogsCompose {
 
     public static void addLogUser(WriteToDocument writeToDocument, String userName) throws IOException {
         ReadDocument readDocumentFresh = new ReadDocument("/logs/logs.json");
-//        System.out.println("HEREREERERERERERERERERE");
-        StringBuilder stringBuilder = readDocumentFresh.readFile();
-        System.out.println("STRINGBUILDER HOLA");
-        System.out.println("ABACXI" + stringBuilder );
-
         List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
-//        List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
 
         ReadDocument readDocumentOneLog = new ReadDocument("/one-log.json");
         LogEntry logEntry = LogsManipulation.addUser(readDocumentOneLog.readFile().toString(), userName);
@@ -99,16 +69,4 @@ public class LogsCompose {
 
         writeToDocument.writeOnResourceFileJson(logEntries, "/jsonSourceIp.json");
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

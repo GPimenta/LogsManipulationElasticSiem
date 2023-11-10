@@ -18,21 +18,12 @@ public class ReadDocument {
         StringBuilder jsonString = new StringBuilder();
         String line;
 
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(resourceAsStream))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resourceAsStream))) {
 
-            while ((line = reader.readLine()) != null ) {
+            while ((line = reader.readLine()) != null) {
                 jsonString.append(line).append("\n");
             }
         }
         return jsonString;
-
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(resourceAsStream));
-//        StringBuilder jsonString = new StringBuilder();
-//        String line;
-//
-//        while ((line = reader.readLine()) != null ) {
-//            jsonString.append(line).append("\n");
-//        }
-//        return jsonString;
     }
 }

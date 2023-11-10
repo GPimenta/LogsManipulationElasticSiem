@@ -12,16 +12,6 @@ import java.util.List;
 @Data
 public class Parser {
 
-//    private StringBuilder jsonString;
-//    public Parser(StringBuilder jsonString) {
-//        this.jsonString = jsonString;
-//    }
-//
-//    public List<LogEntry> jsonToPojo() throws JsonProcessingException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        return objectMapper.readValue(jsonString.toString(), objectMapper.getTypeFactory().constructCollectionType(List.class, LogEntry.class));
-//    }
-
     public static List<LogEntry> jsonArrayToPojo(StringBuilder jsonString) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonString.toString(), objectMapper.getTypeFactory().constructCollectionType(List.class, LogEntry.class));
@@ -30,12 +20,9 @@ public class Parser {
     public static List<LogEntry> jsonListToPojo(StringBuilder jsonString) throws JsonProcessingException {
         List<LogEntry> logEntries = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println(jsonString.toString());
         String[] lines = jsonString.toString().split("\n");
-        System.out.println(Arrays.toString(lines));
 
         for (String line: lines) {
-//            System.out.println(line);
             LogEntry logEntry = objectMapper.readValue(line, LogEntry.class);
             logEntries.add(logEntry);
         }
