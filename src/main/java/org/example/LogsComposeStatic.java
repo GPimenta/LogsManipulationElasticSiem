@@ -9,7 +9,7 @@ import org.example.utils.WriteToDocument;
 import java.io.IOException;
 import java.util.List;
 
-public class LogsCompose {
+public class LogsComposeStatic {
     static {
         ReadDocument readDocument = new ReadDocument("/authentication-log.json");
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
