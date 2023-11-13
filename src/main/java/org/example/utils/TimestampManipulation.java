@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class TimestampManipulation {
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -52,6 +53,11 @@ public class TimestampManipulation {
     private static LocalDateTime sumHour(LocalDateTime dateTime) {
         return dateTime.plusHours(1);
     }
+//    private static LocalDateTime randomHour(LocalDateTime dateTime) {
+//        Random random = new Random();
+//        dateTime.withHour().withMinute()
+//
+//    }
 
     private static LocalDateTime sumDay(LocalDateTime dateTime) {
         return dateTime.plusDays(1);

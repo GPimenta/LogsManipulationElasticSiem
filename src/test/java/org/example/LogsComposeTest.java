@@ -23,7 +23,7 @@ class LogsComposeTest {
 
     @Test
     void addLogDayTimeTest() throws IOException {
-        String time = "2024-08-15T09:00:00";
+        String time = "2023-08-15T23:00:00";
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         LogsCompose.addLogDayTime(writeToDocument, time);
 

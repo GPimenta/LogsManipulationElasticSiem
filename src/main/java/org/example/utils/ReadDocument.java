@@ -1,9 +1,6 @@
 package org.example.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class ReadDocument {
 
@@ -14,11 +11,10 @@ public class ReadDocument {
     }
 
     public StringBuilder readFile() throws IOException {
-        InputStream resourceAsStream = ReadDocument.class.getResourceAsStream(resourceFile);
         StringBuilder jsonString = new StringBuilder();
         String line;
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resourceAsStream))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.resourceFile))) {
 
             while ((line = reader.readLine()) != null) {
                 jsonString.append(line).append("\n");

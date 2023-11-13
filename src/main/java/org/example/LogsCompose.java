@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LogsCompose {
     static {
-        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+        ReadDocument readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
         try {
@@ -27,10 +27,10 @@ public class LogsCompose {
     }
 
     public static void addLogDayTime(WriteToDocument writeToDocument, String time) throws IOException {
-        ReadDocument readDocumentFresh = new ReadDocument("/logs/logs.json");
+        ReadDocument readDocumentFresh = new ReadDocument("src/main/resources/logs/logs.json");
         List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
 
-        ReadDocument readDocumentOneLog = new ReadDocument("/one-log.json");
+        ReadDocument readDocumentOneLog = new ReadDocument("src/main/resources/one-log.json");
         LogEntry logEntry = LogsManipulation.addDayTime(readDocumentOneLog.readFile().toString(), time);
         logEntries.add(logEntry);
 
@@ -38,10 +38,10 @@ public class LogsCompose {
     }
 
     public static void addLogUser(WriteToDocument writeToDocument, String userName) throws IOException {
-        ReadDocument readDocumentFresh = new ReadDocument("/logs/logs.json");
+        ReadDocument readDocumentFresh = new ReadDocument("src/main/resources/logs/logs.json");
         List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
 
-        ReadDocument readDocumentOneLog = new ReadDocument("/one-log.json");
+        ReadDocument readDocumentOneLog = new ReadDocument("src/main/resources/one-log.json");
         LogEntry logEntry = LogsManipulation.addUser(readDocumentOneLog.readFile().toString(), userName);
         logEntries.add(logEntry);
 
@@ -49,10 +49,10 @@ public class LogsCompose {
     }
 
     public static void addHost(WriteToDocument writeToDocument, String host) throws IOException {
-        ReadDocument readDocumentFresh = new ReadDocument("/logs/logs.json");
+        ReadDocument readDocumentFresh = new ReadDocument("src/main/resources/logs/logs.json");
         List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
 
-        ReadDocument readDocumentOneLog = new ReadDocument("/one-log.json");
+        ReadDocument readDocumentOneLog = new ReadDocument("src/main/resources/one-log.json");
         LogEntry logEntry = LogsManipulation.addHost(readDocumentOneLog.readFile().toString(), host);
         logEntries.add(logEntry);
 
@@ -60,10 +60,10 @@ public class LogsCompose {
     }
 
     public static void addSourceIp(WriteToDocument writeToDocument, String sourceIp) throws IOException {
-        ReadDocument readDocumentFresh = new ReadDocument("/logs/logs.json");
+        ReadDocument readDocumentFresh = new ReadDocument("src/main/resources/logs/logs.json");
         List<LogEntry> logEntries = Parser.jsonListToPojo(readDocumentFresh.readFile());
 
-        ReadDocument readDocumentOneLog = new ReadDocument("/one-log.json");
+        ReadDocument readDocumentOneLog = new ReadDocument("src/main/resources/one-log.json");
         LogEntry logEntry = LogsManipulation.addSourceIp(readDocumentOneLog.readFile().toString(), sourceIp);
         logEntries.add(logEntry);
 
