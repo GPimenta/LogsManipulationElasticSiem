@@ -3,14 +3,29 @@ package org.example.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 class TimestampManipulationTest {
 
+    @Test
+    public void randomHourTest() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        String timestamp = "2023-04-01T19:14:08";
+        LocalDateTime result = LocalDateTime.parse(timestamp, formatter);
 
-//    @Test
-//    void addDay() throws JsonProcessingException {
-//        String test = "{\"winlog\":{\"event_data\":{\"LogonType\":\"interactive\"}},\"event\":{\"type\":\"User Login Change Event\",\"original\":\"NA\",\"outcome\":\"success\",\"category\":\"authentication\",\"action\":\"User Login Information\"},\"@timestamp\":\"2023-08-15T09:00:00\",\"user\":{\"name\":\"cbrignall7\"},\"host\":{\"name\":\"server3\"},\"source\":{\"ip\":\"99.7.121.32\"}}\n";
-//
-//        System.out.println(TimestampManipulation.addDayTime(test));
-//
-//    }
+        LocalDateTime dateTime = TimestampManipulation.randomHour(result);
+        System.out.println(dateTime);
+    }
+
+
+    @Test
+    public void sumWorkDays() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        String timestamp = "2023-11-17T19:14:08";
+        LocalDateTime result = LocalDateTime.parse(timestamp, formatter);
+
+        LocalDateTime dateTime = TimestampManipulation.sumWorkDays(result);
+        System.out.println(dateTime);
+    }
 }

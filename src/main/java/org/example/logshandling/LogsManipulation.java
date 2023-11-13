@@ -67,11 +67,11 @@ public class LogsManipulation {
     }
 
     public void writeStringLogsToFile(String fileName) throws IOException {
-        writeToDocument.writeOnResourceFile(addDateTimeToLogs(5, 9), fileName);
+        writeToDocument.writeOnResourceFile(addDateTimeToLogs(5, 20), fileName);
     }
 
     public void writeJsonLogsToFile(String fileName) throws IOException {
-        writeToDocument.writeOnResourceFileJson(addDateTimeToLogs(5, 9), fileName);
+        writeToDocument.writeOnResourceFileJson(addDateTimeToLogs(10, 15), fileName);
     }
 
     public static LogEntry addDayTime(String logEntry, String timeStamp) throws JsonProcessingException {

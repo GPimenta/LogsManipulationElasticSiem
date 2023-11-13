@@ -11,7 +11,7 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "mmorant0"
   },
@@ -34,12 +34,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "jorrell1"
   },
   "host": {
-    "name": "server3"
+    "name": "server2"
   },
   "source": {
     "ip": "67.175.250.51"
@@ -57,12 +57,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "ccansdall2"
   },
   "host": {
-    "name": "server3"
+    "name": "server1"
   },
   "source": {
     "ip": "3.115.102.173"
@@ -80,12 +80,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "rnewvell3"
   },
   "host": {
-    "name": "server3"
+    "name": "server4"
   },
   "source": {
     "ip": "119.163.78.250"
@@ -103,12 +103,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "cpirdy4"
   },
   "host": {
-    "name": "server3"
+    "name": "server2"
   },
   "source": {
     "ip": "1.22.180.12"
@@ -126,7 +126,7 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "iharrald5"
   },
@@ -149,12 +149,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "tscading6"
   },
   "host": {
-    "name": "server3"
+    "name": "server4"
   },
   "source": {
     "ip": "173.181.35.251"
@@ -172,12 +172,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "cbrignall7"
   },
   "host": {
-    "name": "server3"
+    "name": "server2"
   },
   "source": {
     "ip": "99.7.121.32"
@@ -195,12 +195,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "owildblood8"
   },
   "host": {
-    "name": "server3"
+    "name": "server4"
   },
   "source": {
     "ip": "18.251.142.112"
@@ -218,12 +218,12 @@
     "category": "authentication",
     "action": "User Login Information"
   },
-  "@timestamp": "error: invalid date \"2023-08-15T16:20:52\"",
+  "@timestamp": "error: invalid date \"2023-08-14T16:20:52\"",
   "user": {
     "name": "ufilshin9"
   },
   "host": {
-    "name": "server3"
+    "name": "server1"
   },
   "source": {
     "ip": "91.242.27.223"

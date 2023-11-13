@@ -22,7 +22,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void correctDocumentLogEntryTimeStamp() throws IOException {
-        readDocument = new ReadDocument("/authentication-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-log.json");
 //        Parser parser = new Parser(readDocument.readFile());
 
         List<LogEntry> logEntries = Parser.jsonArrayToPojo(readDocument.readFile()).stream()
@@ -40,7 +40,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void resetListLogEntry() throws IOException {
-        readDocument = new ReadDocument("/authentication-test-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-test-log.json");
 //        Parser parser = new Parser(readDocument.readFile());
 
         List<LogEntry> logEntries = Parser.jsonArrayToPojo(readDocument.readFile()).stream()
@@ -54,7 +54,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addDaysToLogs() throws IOException {
-        readDocument = new ReadDocument("/authentication-test-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-test-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
 
@@ -70,7 +70,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addHoursToLogs() throws IOException {
-        readDocument = new ReadDocument("/authentication-test-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-test-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
 
@@ -85,7 +85,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addDateTimeToLogs() throws IOException {
-        readDocument = new ReadDocument("/authentication-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
 
@@ -96,7 +96,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void writeLogs() throws IOException {
-        readDocument = new ReadDocument("/authentication-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
         logsManipulation.writeStringLogsToFile("/logs.txt");
@@ -104,7 +104,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void writeLogsJson() throws IOException {
-        readDocument = new ReadDocument("/authentication-log.json");
+        readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         writeToDocument = new WriteToDocument("/logs");
         LogsManipulation logsManipulation = new LogsManipulation(readDocument, writeToDocument);
         logsManipulation.writeJsonLogsToFile("/logs.json");
@@ -112,7 +112,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addDayTimeTest() throws IOException {
-        readDocument = new ReadDocument("/one-log.json");
+        readDocument = new ReadDocument("src/main/resources/one-log.json");
         String time = "2024-08-15T09:00:00";
         LogEntry logEntry = LogsManipulation.addDayTime(readDocument.readFile().toString(), time);
         System.out.println(logEntry);
@@ -120,7 +120,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addUserTest() throws IOException {
-        readDocument = new ReadDocument("/one-log.json");
+        readDocument = new ReadDocument("src/main/resources/one-log.json");
         String user = "Lolipop";
         LogEntry logEntry = LogsManipulation.addUser(readDocument.readFile().toString(), user);
         System.out.println(logEntry);
@@ -129,7 +129,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addHostTest() throws IOException {
-        readDocument = new ReadDocument("/one-log.json");
+        readDocument = new ReadDocument("src/main/resources/one-log.json");
         String hostName = "serverBanana";
         LogEntry logEntry = LogsManipulation.addHost(readDocument.readFile().toString(), hostName);
         System.out.println(logEntry);
@@ -137,7 +137,7 @@ class LogsTimeManipulationTest {
 
     @Test
     void addSourceIpTest() throws IOException {
-        readDocument = new ReadDocument("/one-log.json");
+        readDocument = new ReadDocument("src/main/resources/one-log.json");
         String sourceIp = "127.0.0.1";
         LogEntry logEntry = LogsManipulation.addSourceIp(readDocument.readFile().toString(), sourceIp);
         System.out.println(logEntry);

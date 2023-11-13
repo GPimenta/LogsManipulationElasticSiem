@@ -16,7 +16,7 @@ class LogsComposeTest {
 
     @Test
     void resetLogsTest() throws IOException {
-        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+        ReadDocument readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         WriteToDocument writeToDocument = new WriteToDocument("/logs");
         LogsCompose.resetLogs(readDocument, writeToDocument);
     }

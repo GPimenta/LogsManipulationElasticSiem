@@ -9,7 +9,7 @@ class ReadDocumentTest {
 
     @Test
     void readFile() throws IOException {
-        ReadDocument readDocument = new ReadDocument("/authentication-log.json");
+        ReadDocument readDocument = new ReadDocument("src/main/resources/authentication-log.json");
         StringBuilder stringBuilder = readDocument.readFile();
         System.out.println(stringBuilder.toString());
     }
